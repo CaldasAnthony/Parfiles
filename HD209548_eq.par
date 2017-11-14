@@ -1,0 +1,93 @@
+[General]
+verbose = True
+verbose_all_threads = False
+type = transmission
+manual_waverange = False
+wavemin = 0.6
+wavemax = 20.
+ace = False
+
+
+[Input]
+opacity_method = xsec_sampled
+ktab_path = Input/ktables/R100/
+xsec_path = Input/xsec/10wno/
+cia_path = Input/cia/hitran/
+spectrum_file = Input/spectrum_file/HD209458/HD209458_3D_duo_linear_1500_2000_30_eq.dat
+xsec_dnu = 10
+spetrum_micron = True
+spectrum_db = True
+
+[Output]
+path = Output/
+save_plots = True
+sigma_spectrum_frac = 0.1
+
+[Star]
+temp = 6065
+radius = 1.155
+
+[Planet]
+radius = 1.36695226788
+mass = 0.692478398314
+
+[Atmosphere]
+nlayers = 100
+max_pressure = 1e6
+min_pressure = 1e-3
+tp_type = isothermal
+tp_iso_temp = 1750
+# tp_file = Input/EXAMPLE_tp_profile.dat
+# tp_guillot_T_irr = 1500
+# tp_guillot_kappa_ir = 0.05
+# tp_guillot_kappa_v1 = 0.05
+# tp_guillot_kappa_v2 = 0.05
+# tp_guillot_alpha = 0.005
+
+# tp_2point_T_surf = 1500
+# T_trop = T_surf - T_trop_diff
+# tp_2point_T_trop_diff = 500
+# tp_2point_P_trop = 100
+
+# tp_Npoint_T_list = 2500, 2200, 1800, 1800
+# tp_Npoint_P_list = -1, 1e4, 100.0, -1
+# tp_Npoint_smooth = 10
+
+active_gases = H2O, NH3, CH4, CO, CO2
+active_gases_mixratios = 0.01, 0.01, 0.01, 0.01, 0.01
+# active_gases_file = Input/EXAMPLE_active_gases_profile.dat
+
+N2_mixratio = 0.01
+He_H2_ratio = 0.17647
+
+cia_pairs = H2-H2, H2-He
+
+rayleigh = True
+cia = True
+
+clouds = False
+clouds_pressure = 1e-2
+
+ace_metallicity = 1
+ace_co = 0.54954
+
+mu = 20.0
+couple_mu = True
+
+[Fitting]
+transmission = True
+fit_temp = True
+fit_mu = True
+fit_radius = True
+fit_N2_mixratio = True
+X_active_bounds = 1.0e-12, 1.0
+X_inactive_bounds = 1.0e-12, 1.0
+mu_bounds = 0, 30
+radius_bounds = 0.1, 1.5
+tp_iso_bounds = 1000, 2500
+
+[MultiNest]
+run = True
+resume = True
+verbose = True
+n_live_points = 1000
